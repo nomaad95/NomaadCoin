@@ -1,5 +1,5 @@
-#include "block.h"
-#include "sha256.h"
+#include "header/block.h"
+#include "header/sha256.h"
 #include <sstream>
 
 Block::Block(uint32_t nIndexIn, const string &sDataIn, char* amount) : _nIndex(nIndexIn), _sData(sDataIn) {

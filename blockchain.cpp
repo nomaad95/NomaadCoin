@@ -1,7 +1,10 @@
 #include"blockchain.h"
-
+#include<ctime>
 Blockchain::Blockchain() {
-_vChain.emplace_back(Block(0, "Genesis Block"));
+
+  time_t now = time(0);
+  char* dt = ctime(&now);
+_vChain.emplace_back(Block(0, "Genesis Block", dt));
 _nDifficulty = 6;
 }
 

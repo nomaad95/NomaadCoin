@@ -14,6 +14,21 @@ bNew.MineBlock(_nDifficulty);
 _vChain.push_back(bNew);
 }
 
+bool Blockchain::isChainValid(){
+
+  for(int i=0; i<_vChain.size();i++){
+    Block currentBlock = _vChain[i];
+    Block prevBlock = _vChain[i-1];
+    if((currentBlock.GetHash() != currentBlock._CalculateHash()) || currentBlock.sPrevHash != prevBlock.GetHash()){
+      return false;
+    }
+  }
+
+  return true;
+
+
+}
+
 Block Blockchain::_GetLastBlock() const {
 return _vChain.back();
 }

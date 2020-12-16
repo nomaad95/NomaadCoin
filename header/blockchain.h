@@ -8,6 +8,7 @@ class Blockchain {
   public:
     Blockchain();
     void AddBlock(Block bNew);
+    bool isChainValid();
   private:
     uint32_t _nDifficulty;
     vector<Block> _vChain;

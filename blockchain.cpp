@@ -4,8 +4,8 @@ Blockchain::Blockchain() {
 
   time_t now = time(0);
   char* dt = ctime(&now);
-_vChain.emplace_back(Block(0, "Genesis Block", dt));
-_nDifficulty = 6;
+_vChain.emplace_back(Block(0, "Genesis Block", 1));
+_nDifficulty = 5;
 }
 
 void Blockchain::AddBlock(Block bNew) {
@@ -15,8 +15,8 @@ _vChain.push_back(bNew);
 }
 
 bool Blockchain::isChainValid(){
+  for(int i=1; i<_vChain.size();i++){
 
-  for(int i=0; i<_vChain.size();i++){
     Block currentBlock = _vChain[i];
     Block prevBlock = _vChain[i-1];
     if((currentBlock.GetHash() != currentBlock._CalculateHash()) || currentBlock.sPrevHash != prevBlock.GetHash()){

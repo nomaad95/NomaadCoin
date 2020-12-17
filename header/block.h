@@ -8,9 +8,10 @@ using namespace std;
 class Block {
 public:
   string sPrevHash;
-  Block(uint32_t nIndexIn, const string &sDataIn,char* amount);
+  Block(uint32_t nIndexIn, const string &sDataIn,int amount);
   string GetHash();
   void MineBlock(uint32_t nDifficulty);
+  string _CalculateHash() const;
 private:
   char amount;
   uint32_t _nIndex;
@@ -18,7 +19,6 @@ private:
   string _sData;
   string _sHash;
   time_t _tTime;
-  string _CalculateHash() const;
 
 
 

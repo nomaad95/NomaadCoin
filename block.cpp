@@ -2,9 +2,9 @@
 #include "header/sha256.h"
 #include <sstream>
 
-Block::Block(uint32_t nIndexIn, const string &sDataIn, char* amount) : _nIndex(nIndexIn), _sData(sDataIn) {
+Block::Block(uint32_t nIndexIn, const string &sDataIn, int amount) : _nIndex(nIndexIn), _sData(sDataIn) {
 _nNonce = -1;
-_tTime = time(nullptr);
+_tTime = time(0);
 }
 
 string Block::GetHash() {

@@ -1,4 +1,5 @@
 #include"header/blockchain.h"
+
 #include<ctime>
 
 int main() {
@@ -7,9 +8,12 @@ int main() {
   int numblock = 0;
 
   while(true){
+		Transaction trans = Transaction("ok","ok",1);
+		list<Transaction> transactions;
+		transactions.emplace_front(trans);
 	  cout << "Mining new block" << endl;
 	  cout << numblock << endl;
-	  Block stBlock = Block(1,"hi", 1);
+	  Block stBlock = Block(time(0),transactions);
 		cout << "adding block" << endl;
 	  bChain.AddBlock(stBlock);
 		cout << "validate chain" << endl;

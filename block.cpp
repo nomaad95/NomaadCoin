@@ -1,10 +1,11 @@
 #include "header/block.h"
 #include "header/sha256.h"
 #include <sstream>
+#include <ctime>
 
-Block::Block(uint32_t nIndexIn, const string &sDataIn, int amount) : _nIndex(nIndexIn), _sData(sDataIn) {
+Block::Block(time_t now, list<Transaction> sDataIn) {
 _nNonce = -1;
-_tTime = time(0);
+now = time(0);
 }
 
 string Block::GetHash() {
@@ -28,6 +29,6 @@ void Block::MineBlock(uint32_t nDifficulty) {
 
 inline string Block::_CalculateHash() const {
 stringstream ss;
-ss << _nIndex << _tTime << _sData << _nNonce << sPrevHash;
+ss << _nIndex << now << _sData << _nNonce << sPrevHash;
 return sha256(ss.str());
 }

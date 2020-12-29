@@ -1,10 +1,12 @@
 #include"header/blockchain.h"
+#include<list>
 #include<ctime>
 Blockchain::Blockchain() {
 
   time_t now = time(0);
   char* dt = ctime(&now);
-_vChain.emplace_back(Block(0, "Genesis Block", 1));
+	list<Transaction> trans;
+_vChain.emplace_back(Block(time(0), trans));
 _nDifficulty = 5;
 }
 
@@ -12,6 +14,11 @@ void Blockchain::AddBlock(Block bNew) {
 bNew.sPrevHash = _GetLastBlock().GetHash();
 bNew.MineBlock(_nDifficulty);
 _vChain.push_back(bNew);
+}
+
+void Blockchain::minePendingTransactions(char miningRewardAddress){
+	Block* block = new Block(time(0), pendingTransactions);
+
 }
 
 bool Blockchain::isChainValid(){

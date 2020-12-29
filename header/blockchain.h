@@ -1,5 +1,6 @@
 #include <cstdint>
 #include <vector>
+#include <list>
 #include "block.h"
 using namespace std;
 
@@ -9,6 +10,9 @@ class Blockchain {
     Blockchain();
     void AddBlock(Block bNew);
     bool isChainValid();
+    int miningRewards = 10;
+		list<Transaction> pendingTransactions;
+		void minePendingTransactions(char miningRewardAddress);
   private:
     uint32_t _nDifficulty;
     vector<Block> _vChain;

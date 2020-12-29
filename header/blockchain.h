@@ -12,7 +12,7 @@ class Blockchain {
     bool isChainValid();
     int miningRewards = 10;
 		list<Transaction> pendingTransactions;
-		void minePendingTransactions(char miningRewardAddress);
+		void minePendingTransactions(string miningRewardAddress);
   private:
     uint32_t _nDifficulty;
     vector<Block> _vChain;

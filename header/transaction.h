@@ -5,7 +5,7 @@
 using namespace std;
 
 
-class Transaction {
+class Transaction{
   public:
 		Transaction(string fromAddress,string toAddress, int amount);
     string fromAddress;

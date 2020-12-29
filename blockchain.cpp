@@ -16,12 +16,16 @@ bNew.MineBlock(_nDifficulty);
 _vChain.push_back(bNew);
 }
 
-void Blockchain::minePendingTransactions(char miningRewardAddress){
-	Block block = new Block(time(0), pendingTransactions);
-	block->MineBlock(_nDifficulty);
+void Blockchain::minePendingTransactions(string miningRewardAddress){
+
+	Block block = Block(time(0), pendingTransactions);
+	block.MineBlock(_nDifficulty);
 	_vChain.emplace_back(block);
 	pendingTransactions.empty();
-	pendingTransactions.push_back(new Transaction(null, miningRewardAddress, miningRewards ));
+	string test = "test";
+	Transaction t1 =  Transaction(NULL, miningRewardAddress, miningRewards );
+	pendingTransactions.push_back(t1);
+  cout << "new block mined, giving reward" << endl;
 
 
 }

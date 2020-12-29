@@ -17,7 +17,12 @@ _vChain.push_back(bNew);
 }
 
 void Blockchain::minePendingTransactions(char miningRewardAddress){
-	Block* block = new Block(time(0), pendingTransactions);
+	Block block = new Block(time(0), pendingTransactions);
+	block->MineBlock(_nDifficulty);
+	_vChain.emplace_back(block);
+	pendingTransactions.empty();
+	pendingTransactions.push_back(new Transaction(null, miningRewardAddress, miningRewards ));
+
 
 }
 

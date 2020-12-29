@@ -15,7 +15,7 @@ int main() {
 	  cout << numblock << endl;
 	  Block stBlock = Block(time(0),transactions);
 		cout << "adding block" << endl;
-	  bChain.AddBlock(stBlock);
+	  bChain.minePendingTransactions("test");
 		cout << "validate chain" << endl;
 	  bChain.isChainValid();
 	  numblock++;

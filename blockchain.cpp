@@ -22,12 +22,15 @@ void Blockchain::minePendingTransactions(string miningRewardAddress){
 	block.MineBlock(_nDifficulty);
 	_vChain.emplace_back(block);
 	pendingTransactions.empty();
-	string test = "test";
 	Transaction t1 =  Transaction(NULL, miningRewardAddress, miningRewards );
 	pendingTransactions.push_back(t1);
   cout << "new block mined, giving reward" << endl;
 
 
+}
+
+void Blockchain::createTransaction(Transaction transaction){
+	pendingTransactions.push_back(transaction);
 }
 
 bool Blockchain::isChainValid(){

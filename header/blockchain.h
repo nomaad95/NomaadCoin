@@ -13,6 +13,7 @@ class Blockchain {
     int miningRewards = 10;
 		list<Transaction> pendingTransactions;
 		void minePendingTransactions(string miningRewardAddress);
+		void createTransaction(Transaction transaction);
   private:
     uint32_t _nDifficulty;
     vector<Block> _vChain;

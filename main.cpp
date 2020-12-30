@@ -15,19 +15,6 @@ int main() {
 		bChain.minePendingTransactions("miner");
 		double address1Balance = bChain.getBalance("miner");
 		cout << "miner balance:" << address1Balance << endl;
-		/*
-		Transaction trans = Transaction("ok","ok",1);
-		list<Transaction> transactions;
-		transactions.emplace_front(trans);
-	  cout << "Mining new block" << endl;
-	  cout << numblock << endl;
-	  Block stBlock = Block(time(0),transactions, bChain._vChain.size());
-		cout << "adding block" << endl;
-	  bChain.minePendingTransactions("test");
-		cout << "validate chain" << endl;
-	  bChain.isChainValid();
-		//t1.amount++;
-		//t2.amount++;*/
 	  *numblock++;
   }
 

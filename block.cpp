@@ -3,7 +3,8 @@
 #include <sstream>
 #include <ctime>
 
-Block::Block(time_t now, list<Transaction> sDataIn) {
+Block::Block(time_t now, list<Transaction> sDataIn, int index) {
+_nIndex = index;
 _nNonce = -1;
 now = time(0);
 }
@@ -23,12 +24,18 @@ void Block::MineBlock(uint32_t nDifficulty) {
     _nNonce++;
     _sHash = _CalculateHash();
   } while (_sHash.substr(0, nDifficulty) != str);
+	cout<<"prevHash\n"<<sPrevHash<<endl;
   cout << "Block mined: " << _sHash << endl;
+	cout<<"time\n"<<now<<endl;
+	cout<<"data\n"<<_nNonce<<endl;
+	cout<<"\n"<<endl;
+
 }
 
 
 inline string Block::_CalculateHash() const {
 stringstream ss;
+
 ss << _nIndex << now << _sData << _nNonce << sPrevHash;
 return sha256(ss.str());
 }

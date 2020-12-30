@@ -9,7 +9,8 @@ using namespace std;
 
 class Block {
 public:
-	Block(time_t now, list<Transaction> sDataIn);
+	Block(time_t now, list<Transaction> sDataIn, int index);
+	list<Transaction> sDataIn;
   string sPrevHash;
   string GetHash();
   void MineBlock(uint32_t nDifficulty);

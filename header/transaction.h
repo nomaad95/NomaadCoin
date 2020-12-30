@@ -11,5 +11,6 @@ class Transaction{
     string fromAddress;
     string toAddress;
     int amount;
+		string hash; // id of the transaction
 
 };

@@ -53,6 +53,13 @@ double Blockchain::getBalance(string walletAddress){
 }
 
 void Blockchain::createTransaction(Transaction transaction){
+	if((getBalance(transaction.fromAddress) < transaction.amount) && transaction.fromAddress.size() != 0){
+		cout << getBalance(transaction.fromAddress) << endl;
+		cout << transaction.amount << endl;
+		cout << "wallet amount of" << transaction.fromAddress
+		<< "too low for transaction" << transaction.hash << endl;;
+		return;
+	}
 	pendingTransactions.push_back(transaction);
 	cout << "pending transactions :" << pendingTransactions.size() << endl;
 }

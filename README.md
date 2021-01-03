@@ -14,7 +14,7 @@ This project is a basic c++ example of a blockchain. First of all an empty block
 
   * Run the project with <code>./main</code>
 
-##Information
+## Information
 
 This Makefile needs to create .o files to compile the project. You can get rid of all those .o files by typing <code>make clean</code> in the root folder.
 

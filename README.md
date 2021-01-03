@@ -1,6 +1,6 @@
 # NomaadCoin
 
-This project is a basic c++ example of a blockchain. First of all an empty blockchain is started. Then a loop is created in which a mining addres validates transactions between 2 other addresses.
+This project is a basic C++ example of a blockchain. First of all an empty blockchain is started. Then a loop is created in which a mining addres validates transactions between 2 other addresses.
 
 ## Getting started
 

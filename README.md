@@ -24,8 +24,8 @@ This Makefile needs to create .o files to compile the project. You can get rid o
 Camille Bamboute (looking for a software engineer position)
 
 ### Tips
-Bitcoin jar: 3MsxSrTRHgkXqkuXGWiCNz4GS4Xu58iL1g
+Bitcoin jar: 1NDCtru1eSm2H46HCPSaBGscNTKTLngbLe
 
-Ethereum jar: 0x11340eA56BAb7142CF8fEe04093A1f3edC767ab0
+Ethereum jar: 0x41Cd2f693Ac2673AcfA2B89a65E2E9DcD305b525
 
 Dogecoin jar: D9JFfxeDesPfjjBCc7rh1eeS83n72o6Foq

@@ -12,34 +12,42 @@
 
 namespace mp = boost::multiprecision;
 
-Rsa::Rsa(int * pub, int * pri, int * mo){
+Rsa::Rsa(){
 }
 
-void Rsa::genKey(int * pub, int * pri, int *mod){
-	int p;
-	int q;
-	int e;
-	int k;
-	int d;
-	int message = 8;
-	p = randomBigPrime(100);
+void Rsa::genKey(){
 	do{
-		q = randomBigPrime(100);
-	} while(q == p);
+		int p;
+		int q;
+		int k;
+		int m;
+		p = randomBigPrime(100);
+		do{
+			q = randomBigPrime(100);
+		} while(q == p);
+		mod = p*q; 												// modulo of rsa algorithm
+		pub = randomBigPrime(mod);			 // generation of a random prime number for the public key
 
-	e = randomBigPrime(p*q);
-	int n = p*q;
-	int m = (p-1)*(q-1);
-	int c = recursiveGCD(m,e,&k,&d);
-	if( d < 0){
-		d += m;
-	}
+		m = (p-1)*(q-1);	 								// definition of phi (used in RSA calculation)
+		recursiveGCD(m,pub,&k,&pri); 					//finds the value of the integer of the private key for a given phi and a given prime number
 
-	mp::cpp_int encrypt = mp::pow(mp::cpp_int(message), e)%n;  //public is (n,E)
-	mp::cpp_int decrypt = mp::pow(mp::cpp_int(encrypt), d)%n; // private is (n,D)
+		if( pri < 0){ 												//In certain cases the found Integer may be negative. Adding phi makes it positive
+			pri += m;
+		}
+	} while(pri == 1); // if pri is equal to 1 the RSA logic cannot work
+
+
 }
 
-int Rsa::randomBigPrime( int max){
+mp::cpp_int Rsa::encrypt(int message){
+	return mp::pow(mp::cpp_int(message), pub)%mod;
+}
+
+mp::cpp_int Rsa::decrypt(mp::cpp_int encrypted){
+	return mp::pow(mp::cpp_int(encrypted), pri)%mod;
+}
+
+int Rsa::randomBigPrime( int max){ // returns a random large prime integer
 
 	vector<int> primes;
 	for(int i = 2; i < max; i++){
@@ -48,6 +56,9 @@ int Rsa::randomBigPrime( int max){
 		}
 	}
 	srand(time(NULL));
+	if(primes.size() == 0){
+		cout << "division par 0" << endl;
+	}
 	int number = (rand()%primes.size());
 	//cout << "number " << number << endl;
 	return primes[number];
@@ -64,7 +75,6 @@ mp::cpp_int Rsa::testBigPrime(mp::cpp_int a){ // checks if an integer is prime
 			return 0;
 		}
 	}
-	//scout << "primary" << endl;
 
 	return 1;
 }
@@ -85,7 +95,7 @@ mp::cpp_int Rsa::recursiveBigGCD(mp::cpp_int a, mp::cpp_int b, mp::cpp_int *x, m
 
 }
 
-int Rsa::recursiveGCD(int a, int b, int *x, int *y){ // gives the gcd of 2 integers
+int Rsa::recursiveGCD(int a, int b, int *x, int *y){ // returns the gcd of 2 integers
 	if(b == 0){
 		*x = 1;
 		*y = 0;

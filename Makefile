@@ -1,5 +1,5 @@
-main: main.o blockchain.o block.o sha256.o transaction.o
-	g++ main.o blockchain.o block.o sha256.o transaction.o -o main
+main: main.o blockchain.o block.o sha256.o transaction.o rsa.o
+	g++ main.o blockchain.o block.o sha256.o transaction.o rsa.o -o main
 
 
 #main.o: main.cpp header/blockchain.h header/transaction.h secp256k1/include/secp256k1.h
@@ -16,6 +16,9 @@ transaction.o: transaction.cpp header/transaction.h
 
 sha256.o: sha256.cpp header/sha256.h
 	g++ -c sha256.cpp
+
+rsa.o: rsa.cpp header/rsa.h
+	g++ -c rsa.cpp
 
 clean:
 	rm *.o

@@ -1,3 +1,4 @@
+#include "header/rsa.h"
 #include<stdio.h>
 #include <iostream>
 #include<vector>
@@ -9,8 +10,9 @@
 #include<math.h>
 #include<boost/multiprecision/cpp_int.hpp>
 
-Rsa::Rsa(int * pub, int * pri, int * mod){
-	Rsa::genKey(pub, pri, mod);
+namespace mp = boost::multiprecision;
+
+Rsa::Rsa(int * pub, int * pri, int * mo){
 }
 
 void Rsa::genKey(int * pub, int * pri, int *mod){
@@ -28,7 +30,7 @@ void Rsa::genKey(int * pub, int * pri, int *mod){
 	e = randomBigPrime(p*q);
 	int n = p*q;
 	int m = (p-1)*(q-1);
-	int c = recursiveBigGCD(m,e,&k,&d);
+	int c = recursiveGCD(m,e,&k,&d);
 	if( d < 0){
 		d += m;
 	}
